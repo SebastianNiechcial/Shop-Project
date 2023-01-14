@@ -1,0 +1,39 @@
+<div class="login-box">
+  <form class="form">
+    <h2 class="form-title">Log in</h2>
+
+    <div class="form_div">
+      <input type="text" class="form-input" placeholder=" " />
+      <label class="form_label">Email*</label>
+    </div>
+    <div class="form_div">
+      <input type="text" class="form-input" placeholder=" " />
+      <label class="form_label">Username*</label>
+    </div>
+    <div class="form_div">
+      <input type="password" class="form-input" placeholder=" " />
+      <label class="form_label">password*</label>
+    </div>
+
+    <div class="form_div">
+      <input type="password" class="form-input" placeholder=" " />
+      <label class="form_label">repeat password*</label>
+    </div>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{ food.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button class="btn">Next</button>
+    <div class="links">
+      <div><a href="#">Forgot password</a></div>
+
+      <a routerLink="/">Back To Login</a>
+    </div>
+  </form>
+</div>
