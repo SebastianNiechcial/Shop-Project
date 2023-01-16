@@ -9,9 +9,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatSelectModule } from '@angular/material/select';
 const routes: Routes = [
-  { path: 'home', component: AppComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 @NgModule({
   declarations: [AppComponent, LoginComponent, RegisterComponent],
