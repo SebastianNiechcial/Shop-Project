@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface Food {
+interface ROLE {
   value: string;
   viewValue: string;
 }
@@ -10,9 +10,9 @@ interface Food {
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
+  Roles: ROLE[] = [
+    { value: '0', viewValue: 'Admin' },
+    { value: '1', viewValue: 'User' },
+    { value: '2', viewValue: 'Maintance' },
   ];
 }

@@ -7,7 +7,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import { MatSelectModule } from '@angular/material/select';
 const routes: Routes = [
   { path: 'home', component: AppComponent },
   { path: 'register', component: RegisterComponent },
@@ -21,6 +21,7 @@ const routes: Routes = [
     MatSlideToggleModule,
     RouterModule.forRoot(routes),
     MatSlideToggleModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

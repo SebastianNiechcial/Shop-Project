@@ -21,10 +21,10 @@
     </div>
 
     <mat-form-field appearance="fill">
-      <mat-label>Favorite food</mat-label>
+      <mat-label>Choose Role</mat-label>
       <mat-select>
-        <mat-option *ngFor="let food of foods" [value]="food.value">
-          {{ food.viewValue }}
+        <mat-option *ngFor="let Role of Roles" [value]="Role.value">
+          {{ Role.viewValue }}
         </mat-option>
       </mat-select>
     </mat-form-field>
