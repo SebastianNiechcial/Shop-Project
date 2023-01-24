@@ -1,27 +1,39 @@
 <div class="login-box">
-  <form class="form">
+  <form #login="ngForm" (ngSubmit)="submit()" class="form">
     <h2 class="form-title">Register new User</h2>
 
-    <div class="form_div">
-      <input type="text" class="form-input" placeholder=" " />
-      <label class="form_label">Email*</label>
-    </div>
-    <div class="form_div">
-      <input type="text" class="form-input" placeholder=" " />
-      <label class="form_label">Username*</label>
-    </div>
-    <div class="form_div">
-      <input type="password" class="form-input" placeholder=" " />
-      <label class="form_label">password*</label>
-    </div>
+    <mat-form-field class="">
+      <mat-label>Email</mat-label>
+      <input
+        ngModel
+        name="Email"
+        type="email"
+        matInput
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-hint>...@(yourmailbox).com</mat-hint>
+    </mat-form-field>
 
-    <div class="form_div">
-      <input type="password" class="form-input" placeholder=" " />
-      <label class="form_label">repeat password*</label>
-    </div>
+    <mat-form-field class="">
+      <mat-label>Username</mat-label>
+      <input ngModel required name="Username" type="text" matInput />
+      <mat-hint>Look out for duplicates!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <mat-label>password</mat-label>
+      <input ngModel name="Password" type="password" matInput />
+      <mat-hint>Make long and strong password</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <mat-label> repeat password</mat-label>
+      <input ngModel name="Password2" type="password" matInput />
+      <mat-hint>Write it second time</mat-hint>
+    </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Choose Role</mat-label>
+      <mat-label >Choose Role</mat-label>
       <mat-select>
         <mat-option *ngFor="let Role of Roles" [value]="Role.value">
           {{ Role.viewValue }}
@@ -29,7 +41,15 @@
       </mat-select>
     </mat-form-field>
 
-    <button class="btn">Next</button>
+    <button
+      (click)="functionclick()"
+      mat-button
+      type="submit"
+      color="primary"
+      class=""
+    >
+      Submit
+    </button>
     <div class="links">
       <div><a href="#">Forgot password</a></div>
 

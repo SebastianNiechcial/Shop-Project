@@ -1,22 +1,40 @@
 <div class="login-box">
-  <form class="form">
-    <h2 class="form-title">Log in</h2>
+  <div class="form">
+    <form [formGroup]="form">
+      <h2 class="form-title">Log in</h2>
 
-    <div class="form_div">
-      <input type="text" class="form-input" placeholder=" " />
-      <label class="form_label">Email*</label>
-    </div>
+      <mat-form-field class="">
+        <mat-label>Email</mat-label>
+        <input
+          id="User"
+          formControlName="username"
+          type="text"
+          matInput
+          placeholder="Ex. pat@example.com"
+        />
+        <mat-hint>...@(yourmailbox).com</mat-hint>
+      </mat-form-field>
 
-    <div class="form_div">
-      <input type="password" class="form-input" placeholder=" " />
-      <label class="form_label">password</label>
-    </div>
+      <mat-form-field class="">
+        <mat-label>password</mat-label>
+        <input id="Pass" formControlName="password" type="password" matInput />
+        <mat-hint></mat-hint>
+      </mat-form-field>
 
-    <button class="btn">Next</button>
-    <div class="links">
-      <div><a href="#">Forgot password</a></div>
+      <button
+        mat-button
+        color="primary"
+        class=""
+        (click)="SubmitLoginDetails()"
+      >
+        Next
+      </button>
 
-      <a routerLink="/register">Create New Account</a>
-    </div>
-  </form>
+      <div class="links">
+        <div><a href="#">Forgot password</a></div>
+
+        <a routerLink="/register">Create New Account</a>
+      </div>
+    </form>
+  </div>
 </div>
