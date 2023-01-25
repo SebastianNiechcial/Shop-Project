@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule, NgForm, Validators } from '@angular/forms';
-import { UrlSerializer } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Router, Routes } from '@angular/router';
 import { UserRestService } from './../services/user.service';
-import { Router } from '@angular/router';
-import { group } from '@angular/animations';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  ValidatorFn,
+  AbstractControl,
+} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { DialogComponent } from '../../common/dialog/dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { style } from '@angular/animations';
 
-export interface ROLE {
-  value: string;
-  viewValue: string;
+export interface Role {
+  id: string;
+  name: string;
 }
 
 @Component({
@@ -19,15 +22,71 @@ export interface ROLE {
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent {
-  submit() {}
+export class RegisterComponent implements OnInit {
+  form!: FormGroup;
+  roleList!: Role[];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private userRestService: UserRestService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
-  functionclick() {}
-  Roles: ROLE[] = [
-    { value: '0', viewValue: 'Admin' },
-    { value: '1', viewValue: 'User' },
-    { value: '2', viewValue: 'Maintance' },
-  ];
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      login: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      rptpassword: ['', [this.validPassword()]],
+      role: ['', [Validators.required]],
+    });
+    this.userRestService.getUser().subscribe((result) => {
+      this.roleList = result as Role[];
+    });
+  }
+
+  private validPassword(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const controls = this.form ? this.form.controls : null;
+      if (controls) {
+        if (
+          this.form.controls['password'].value !=
+            this.form.controls['rptPassword'].value &&
+          this.form.controls['password'].dirty &&
+          this.form.controls['rptPassword'].dirty
+        ) {
+          setTimeout(() => {
+            controls['rptPassword'].markAsTouched();
+            controls['rptPassword'].markAsDirty();
+            controls['rptPassword'].setErrors({ diffrentPassword: true });
+          });
+        }
+      }
+      return Validators.required(control);
+    };
+  }
+  register() {
+    const Values = this.form.getRawValue();
+    delete Values.rptpassword;
+
+    this.userRestService.registrationUser(Values).subscribe(
+      (response) => {
+        console.log(response);
+        if (response === 'Added') {
+          this.router.navigate(['../login']);
+        }
+      },
+      () => {
+        this.dialog.open(DialogComponent, {
+          data: {
+            header: 'Registration Error',
+            message: 'Check your details',
+            class: 'error-style',
+          },
+        });
+      }
+    );
+  }
 }

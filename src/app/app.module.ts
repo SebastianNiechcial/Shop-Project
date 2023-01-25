@@ -18,7 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserRestService } from './components/services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatCardModule } from '@angular/material/card';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -33,6 +33,7 @@ const routes: Routes = [
     MatSlideToggleModule,
     MatSelectModule,
     MatInputModule,
+    MatCardModule,
     MatButtonModule,
     FormsModule,
     HttpClientModule,
@@ -50,5 +51,6 @@ const routes: Routes = [
 
   providers: [UserRestService],
   bootstrap: [AppComponent],
+  exports: [RouterModule],
 })
 export class AppModule {}

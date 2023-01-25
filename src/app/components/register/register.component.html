@@ -1,52 +1,71 @@
 <div class="login-box">
-  <form #login="ngForm" (ngSubmit)="submit()" class="form">
+  <form [formGroup]="form" class="form">
     <h2 class="form-title">Register new User</h2>
 
     <mat-form-field class="">
       <mat-label>Email</mat-label>
       <input
-        ngModel
-        name="Email"
+        required
+        formcontrolname="login"
         type="email"
         matInput
         placeholder="Ex. pat@example.com"
       />
-      <mat-hint>...@(yourmailbox).com</mat-hint>
+
+      <mat-error *ngIf="form.get('login')?.hasError('required')"
+        >Input Required</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field class="">
-      <mat-label>Username</mat-label>
-      <input ngModel required name="Username" type="text" matInput />
-      <mat-hint>Look out for duplicates!</mat-hint>
+      <mat-label>Name</mat-label>
+      <input required formcontrolname="name" matInput />
+      <mat-error *ngIf="form.get('name')?.hasError('required')"
+        >Input Required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <mat-label>LastName</mat-label>
+      <input required formcontrolname="lastName" type="password" matInput />
+
+      <mat-error *ngIf="form.get('lastName')?.hasError('required')"
+        >Input Required</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field class="">
       <mat-label>password</mat-label>
-      <input ngModel name="Password" type="password" matInput />
-      <mat-hint>Make long and strong password</mat-hint>
+      <input required formcontrolname="password" type="password" matInput />
+
+      <mat-error *ngIf="form.get('password')?.hasError('required')"
+        >Input Required</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field class="">
       <mat-label> repeat password</mat-label>
-      <input ngModel name="Password2" type="password" matInput />
-      <mat-hint>Write it second time</mat-hint>
+      <input required formcontrolname="rptpassword" type="password" matInput />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label >Choose Role</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let Role of Roles" [value]="Role.value">
-          {{ Role.viewValue }}
+      <mat-label>Choose Role</mat-label>
+      <mat-select required formcontrolname="role">
+        <mat-option *ngFor="let role of roleList" [value]="role.id">
+          {{ role.name }}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="form.get('role')?.hasError('required')"
+        >Pole wymagane</mat-error
+      >
     </mat-form-field>
 
     <button
-      (click)="functionclick()"
-      mat-button
+      (click)="register()"
+      mat-raised-button
       type="submit"
       color="primary"
-      class=""
+      class=".btn"
     >
       Submit
     </button>
