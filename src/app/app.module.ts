@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { NgForm } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserRestService } from './components/services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';

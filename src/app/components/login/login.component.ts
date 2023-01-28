@@ -1,20 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import {
-  FormBuilder,
-  FormGroup,
-  FormsModule,
-  Validators,
-} from '@angular/forms';
-import { MatInput, MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { UserRestService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 import { group } from '@angular/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+
 import { DialogComponent } from '../../common/dialog/dialog.component';
 @Component({
   selector: 'app-login',

@@ -2,11 +2,11 @@
   <form [formGroup]="form" class="form">
     <h2 class="form-title">Register new User</h2>
 
-    <mat-form-field class="">
+    <mat-form-field>
       <mat-label>Email</mat-label>
       <input
         required
-        formcontrolname="login"
+        formControlName="login"
         type="email"
         matInput
         placeholder="Ex. pat@example.com"
@@ -17,40 +17,40 @@
       >
     </mat-form-field>
 
-    <mat-form-field class="">
+    <mat-form-field>
       <mat-label>Name</mat-label>
-      <input required formcontrolname="name" matInput />
+      <input required formControlName="name" matInput />
       <mat-error *ngIf="form.get('name')?.hasError('required')"
         >Input Required</mat-error
       >
     </mat-form-field>
 
-    <mat-form-field class="">
+    <mat-form-field>
       <mat-label>LastName</mat-label>
-      <input required formcontrolname="lastName" type="password" matInput />
+      <input required formControlName="lastName" type="password" matInput />
 
       <mat-error *ngIf="form.get('lastName')?.hasError('required')"
         >Input Required</mat-error
       >
     </mat-form-field>
 
-    <mat-form-field class="">
+    <mat-form-field>
       <mat-label>password</mat-label>
-      <input required formcontrolname="password" type="password" matInput />
+      <input required formControlName="password" type="password" matInput />
 
       <mat-error *ngIf="form.get('password')?.hasError('required')"
         >Input Required</mat-error
       >
     </mat-form-field>
 
-    <mat-form-field class="">
+    <mat-form-field>
       <mat-label> repeat password</mat-label>
-      <input required formcontrolname="rptpassword" type="password" matInput />
+      <input required formControlName="rptpassword" type="password" matInput />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Choose Role</mat-label>
-      <mat-select required formcontrolname="role">
+      <mat-select required formControlName="role">
         <mat-option *ngFor="let role of roleList" [value]="role.id">
           {{ role.name }}
         </mat-option>

@@ -1,4 +1,4 @@
-import { Router, Routes } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserRestService } from './../services/user.service';
 import {
   FormBuilder,
@@ -10,7 +10,6 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { style } from '@angular/animations';
 
 export interface Role {
   id: string;
@@ -52,10 +51,10 @@ export class RegisterComponent implements OnInit {
       const controls = this.form ? this.form.controls : null;
       if (controls) {
         if (
-          this.form.controls['password'].value !=
-            this.form.controls['rptPassword'].value &&
-          this.form.controls['password'].dirty &&
-          this.form.controls['rptPassword'].dirty
+          this.form.controls['password']?.value !=
+            this.form.controls['rptPassword']?.value &&
+          this.form.controls['password']?.dirty &&
+          this.form.controls['rptPassword']?.dirty
         ) {
           setTimeout(() => {
             controls['rptPassword'].markAsTouched();
@@ -68,10 +67,10 @@ export class RegisterComponent implements OnInit {
     };
   }
   register() {
-    const Values = this.form.getRawValue();
-    delete Values.rptpassword;
+    const values = this.form.getRawValue();
+    delete values.rptpassword;
 
-    this.userRestService.registrationUser(Values).subscribe(
+    this.userRestService.registrationUser(values).subscribe(
       (response) => {
         console.log(response);
         if (response === 'Added') {
