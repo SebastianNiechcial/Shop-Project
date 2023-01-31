@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { UserRestService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-
 import { group } from '@angular/animations';
-
 import { DialogComponent } from '../../common/dialog/dialog.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
