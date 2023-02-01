@@ -17,16 +17,31 @@ import { UserRestService } from './components/services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { LanguageService } from './components/services/LanguageService';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'shop', component: DashboardComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [
     BrowserModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     BrowserAnimationsModule,
     MatSlideToggleModule,
     RouterModule.forRoot(routes),
@@ -41,16 +56,22 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     DialogComponent,
+    DashboardComponent,
   ],
 
-  providers: [UserRestService],
+  providers: [UserRestService, LanguageService],
   bootstrap: [AppComponent],
   exports: [RouterModule],
 })
 export class AppModule {}
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}

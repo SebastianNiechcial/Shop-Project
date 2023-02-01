@@ -1,9 +1,12 @@
 <div class="login-box">
   <form [formGroup]="form" class="form">
     <h2 class="form-title">Register new User</h2>
-
+    <button mat-icon-button (click)="changeLanguage('de')">
+      <mat-icon [svgIcon]="currentFlag"></mat-icon>
+    </button>
+    <br />
     <mat-form-field>
-      <mat-label>Email</mat-label>
+      <mat-label>{{ "translation.Email" | translate }}</mat-label>
       <input
         required
         formControlName="login"
@@ -18,7 +21,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Name</mat-label>
+      <mat-label>{{ "translation.Name" | translate }}</mat-label>
       <input required formControlName="name" matInput />
       <mat-error *ngIf="form.get('name')?.hasError('required')"
         >Input Required</mat-error
@@ -26,7 +29,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>LastName</mat-label>
+      <mat-label>{{ "translation.LastName" | translate }}</mat-label>
       <input required formControlName="lastName" type="password" matInput />
 
       <mat-error *ngIf="form.get('lastName')?.hasError('required')"
@@ -35,7 +38,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>password</mat-label>
+      <mat-label>{{ "translation.Password" | translate }}</mat-label>
       <input required formControlName="password" type="password" matInput />
 
       <mat-error *ngIf="form.get('password')?.hasError('required')"
@@ -44,12 +47,12 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label> repeat password</mat-label>
+      <mat-label> {{ "translation.RptPassword" | translate }}</mat-label>
       <input required formControlName="rptpassword" type="password" matInput />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Choose Role</mat-label>
+      <mat-label>{{ "translation.Role" | translate }}</mat-label>
       <mat-select required formControlName="role">
         <mat-option *ngFor="let role of roleList" [value]="role.id">
           {{ role.name }}
@@ -65,7 +68,7 @@
       mat-raised-button
       type="submit"
       color="primary"
-      class=".btn"
+      class=""
     >
       Submit
     </button>

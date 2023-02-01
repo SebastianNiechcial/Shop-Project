@@ -15,23 +15,27 @@
       </mat-form-field>
 
       <mat-form-field class="">
-        <mat-label>password</mat-label>
+        <mat-label>{{ "translation.Password" | translate }}</mat-label>
         <input id="Pass" formControlName="password" type="password" matInput />
       </mat-form-field>
 
       <button
-        mat-button
+        mat-raised-button
         color="primary"
         class=""
         (click)="SubmitLoginDetails()"
       >
-        Next
+        {{ "translation.BtnNext" | translate }}
       </button>
 
       <div class="links">
-        <div><a href="#">Forgot password</a></div>
+        <div>
+          <a href="#">{{ "translation.ForgetPassword" | translate }}</a>
+        </div>
 
-        <a routerLink="/register">Create New Account</a>
+        <a routerLink="/register">{{
+          "translation.CreateAccount" | translate
+        }}</a>
       </div>
     </form>
   </div>

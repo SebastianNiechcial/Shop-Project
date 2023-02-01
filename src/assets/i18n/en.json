@@ -1,0 +1,17 @@
+{
+  "translation": {
+    "Email": "E-mail",
+    "Name": "Name",
+    "LastName": "Last Name",
+    "ForgetPassword": "Forgot Password",
+    "Password": "Password",
+    "RptPassword": "Repeat Password",
+    "Role": "Role",
+    "BtnNext": "Next",
+    "CreateAccount": "Create New Account",
+    "Greeting": "Hello {{form.name}}",
+    "ChangeLanguage": "Change Language",
+    "Error_Login": "Login Error",
+    "Error_Login_Message": "Wrong Username or Password"
+  }
+}

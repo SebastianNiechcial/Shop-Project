@@ -10,6 +10,7 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { LanguageService } from '../services/LanguageService';
 
 export interface Role {
   id: string;
@@ -24,13 +25,17 @@ export interface Role {
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
   roleList!: Role[];
+  currentFlag!: string;
 
   constructor(
+    private languageService: LanguageService,
     private fb: FormBuilder,
     private userRestService: UserRestService,
     private dialog: MatDialog,
     private router: Router
-  ) {}
+  ) {
+    this.currentFlag = this.languageService.currentFlag;
+  }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -87,5 +92,9 @@ export class RegisterComponent implements OnInit {
         });
       }
     );
+  }
+  changeLanguage(language: string): void {
+    this.languageService.ChangeLanguage(language);
+    this.currentFlag = this.languageService.currentFlag;
   }
 }
