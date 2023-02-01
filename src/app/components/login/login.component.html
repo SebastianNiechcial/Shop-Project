@@ -3,6 +3,11 @@
     <form [formGroup]="form">
       <h2 class="form-title">Log in</h2>
 
+      <button mat-icon-button (click)="changeLanguage('de')">
+        <mat-icon [svgIcon]="currentFlag"></mat-icon>
+      </button>
+      <br />
+
       <mat-form-field class="">
         <mat-label>Email</mat-label>
         <input
