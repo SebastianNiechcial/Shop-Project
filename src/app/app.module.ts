@@ -24,16 +24,13 @@ import { HttpClient } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { LanguageService } from './components/services/LanguageService';
-
-const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'shop', component: DashboardComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-];
+import { AppRoutingModule } from './app-routing-module';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
+    RouterModule,
     BrowserModule,
     TranslateModule.forRoot({
       loader: {
@@ -42,9 +39,9 @@ const routes: Routes = [
         deps: [HttpClient],
       },
     }),
+    MatSidenavModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
-    RouterModule.forRoot(routes),
     MatSlideToggleModule,
     MatSelectModule,
     MatInputModule,
@@ -58,6 +55,8 @@ const routes: Routes = [
     MatFormFieldModule,
     MatToolbarModule,
     MatIconModule,
+    AppRoutingModule,
+    MatListModule,
   ],
   declarations: [
     AppComponent,
@@ -69,7 +68,7 @@ const routes: Routes = [
 
   providers: [UserRestService, LanguageService],
   bootstrap: [AppComponent],
-  exports: [RouterModule],
+  exports: [],
 })
 export class AppModule {}
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {

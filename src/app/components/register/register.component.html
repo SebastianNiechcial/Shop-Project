@@ -1,81 +1,96 @@
 <div class="login-box">
-  <form [formGroup]="form" class="form">
-    <h2 class="form-title">Register new User</h2>
-    <button mat-icon-button (click)="changeLanguage('de')">
-      <mat-icon [svgIcon]="currentFlag"></mat-icon>
-    </button>
-    <br />
-    <mat-form-field>
-      <mat-label>{{ "translation.Email" | translate }}</mat-label>
-      <input
-        required
-        formControlName="login"
-        type="email"
-        matInput
-        placeholder="Ex. pat@example.com"
-      />
-
-      <mat-error *ngIf="form.get('login')?.hasError('required')"
-        >Input Required</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{ "translation.Name" | translate }}</mat-label>
-      <input required formControlName="name" matInput />
-      <mat-error *ngIf="form.get('name')?.hasError('required')"
-        >Input Required</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{ "translation.LastName" | translate }}</mat-label>
-      <input required formControlName="lastName" type="password" matInput />
-
-      <mat-error *ngIf="form.get('lastName')?.hasError('required')"
-        >Input Required</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>{{ "translation.Password" | translate }}</mat-label>
-      <input required formControlName="password" type="password" matInput />
-
-      <mat-error *ngIf="form.get('password')?.hasError('required')"
-        >Input Required</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label> {{ "translation.RptPassword" | translate }}</mat-label>
-      <input required formControlName="rptpassword" type="password" matInput />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>{{ "translation.Role" | translate }}</mat-label>
-      <mat-select required formControlName="role">
-        <mat-option *ngFor="let role of roleList" [value]="role.id">
-          {{ role.name }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('role')?.hasError('required')"
-        >Pole wymagane</mat-error
-      >
-    </mat-form-field>
-
-    <button
-      (click)="register()"
-      mat-raised-button
-      type="submit"
-      color="primary"
-      class=""
-    >
-      Submit
-    </button>
-    <div class="links">
-      <div><a href="#">Forgot password</a></div>
-
-      <a routerLink="/login">Back To Login</a>
+  <div class="form">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button mat-icon-button (click)="changeLanguage('de')">
+        <mat-icon [svgIcon]="currentFlag"></mat-icon>
+      </button>
     </div>
-  </form>
+    <form [formGroup]="form">
+      <h2 class="form-title">{{ "translation.Register" | translate }}</h2>
+
+      <br />
+      <mat-form-field>
+        <mat-label>{{ "translation.Email" | translate }}</mat-label>
+        <input
+          required
+          formControlName="login"
+          type="email"
+          matInput
+          placeholder="Ex. pat@example.com"
+        />
+
+        <mat-error *ngIf="form.get('login')?.hasError('required')">{{
+          "translation.InputReq" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ "translation.Name" | translate }}</mat-label>
+        <input required formControlName="name" matInput />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">{{
+          "translation.InputReq" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ "translation.LastName" | translate }}</mat-label>
+        <input required formControlName="lastName" type="password" matInput />
+
+        <mat-error *ngIf="form.get('lastName')?.hasError('required')">{{
+          "translation.InputReq" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ "translation.Password" | translate }}</mat-label>
+        <input required formControlName="password" type="password" matInput />
+
+        <mat-error *ngIf="form.get('password')?.hasError('required')">{{
+          "translation.InputReq" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label> {{ "translation.RptPassword" | translate }}</mat-label>
+        <input
+          required
+          formControlName="rptpassword"
+          type="password"
+          matInput
+        />
+        <mat-error *ngIf="form.get('name')?.hasError('required')">{{
+          "translation.InputReq" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>{{ "translation.Role" | translate }}</mat-label>
+        <mat-select required formControlName="role">
+          <mat-option *ngFor="let role of roleList" [value]="role.id">
+            {{ role.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('role')?.hasError('required')">{{
+          "translation.InputReq" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <button
+        (click)="register()"
+        mat-raised-button
+        type="submit"
+        color="primary"
+        class=""
+      >
+        {{ "translation.BtnNext" | translate }}
+      </button>
+      <div class="links">
+        <div>
+          <a href="#">{{ "translation.ForgetPassword" | translate }}</a>
+        </div>
+
+        <a routerLink="/login"> {{ "translation.BackToLogin" | translate }}</a>
+      </div>
+    </form>
+  </div>
 </div>

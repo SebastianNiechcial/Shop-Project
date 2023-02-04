@@ -7,11 +7,17 @@
     "Password": "Password",
     "RptPassword": "Repeat Password",
     "Role": "Role",
+    "Login": "Log in",
+    "Register": "Register",
+    "InputReq": "Input Requested",
     "BtnNext": "Next",
+    "BackToLogin": "Back To Login",
     "CreateAccount": "Create New Account",
     "Greeting": "Hello {{form.name}}",
     "ChangeLanguage": "Change Language",
     "Error_Login": "Login Error",
-    "Error_Login_Message": "Wrong Username or Password"
+    "Error_Login_Message": "Wrong Username or Password",
+    "Error_Registration": "Registration Error",
+    "Error_Registration_Message": "Check your details"
   }
 }

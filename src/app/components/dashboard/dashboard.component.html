@@ -1,29 +1,33 @@
-<mat-toolbar>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>{{ "translation.Greeting" | translate }}</span>
-  <span class="spacer"></span>
+<div class="gradient">
+  <mat-toolbar class="white-color" style="background-color: transparent">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ "translation.Greeting" | translate }}</span>
+    <span class="spacer"></span>
 
-  <button mat-icon-button class="example-icon">
-    <mat-icon svgIcon="polish_Flag"></mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+    <button mat-icon-button (click)="changeLanguage('de')">
+      <mat-icon [svgIcon]="currentFlag"></mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <i class="material-icons">panorama_fish_eye</i>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container [hasBackdrop]="false">
+    <mat-sidenav #snav fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{
+          nav
+        }}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="gradient">
+      <p></p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

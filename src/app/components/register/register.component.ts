@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { LanguageService } from '../services/LanguageService';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface Role {
   id: string;
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private userRestService: UserRestService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {
     this.currentFlag = this.languageService.currentFlag;
   }
@@ -85,8 +87,8 @@ export class RegisterComponent implements OnInit {
       () => {
         this.dialog.open(DialogComponent, {
           data: {
-            header: 'Registration Error',
-            message: 'Check your details',
+            header: this.translate.instant('translation.Error_Login'),
+            message: this.translate.instant('translation.Error_Login_Message'),
             class: 'error-style',
           },
         });

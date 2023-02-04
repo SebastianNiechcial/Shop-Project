@@ -1,15 +1,16 @@
 <div class="login-box">
   <div class="form">
-    <form [formGroup]="form">
-      <h2 class="form-title">Log in</h2>
-
+    <div fxLayout="row" fxLayoutAlign="center center">
       <button mat-icon-button (click)="changeLanguage('de')">
         <mat-icon [svgIcon]="currentFlag"></mat-icon>
       </button>
-      <br />
+    </div>
+
+    <form [formGroup]="form">
+      <h2 class="form-title">{{ "translation.Login" | translate }}</h2>
 
       <mat-form-field class="">
-        <mat-label>Email</mat-label>
+        <mat-label>{{ "translation.Email" | translate }}</mat-label>
         <input
           id="User"
           formControlName="username"

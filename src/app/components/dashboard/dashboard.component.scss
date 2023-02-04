@@ -1,3 +1,21 @@
 .spacer {
   flex: 1 1 auto;
 }
+.gradient {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(
+    to right bottom,
+    #292e42,
+    #543a61,
+    #8e3d6a,
+    #c34459,
+    #e06332
+  );
+}
+.white-color {
+  color: white !important;
+}
+.black-color {
+  background-color: black !important;
+}
