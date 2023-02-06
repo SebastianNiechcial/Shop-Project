@@ -1,33 +1,37 @@
 <div class="gradient">
   <mat-toolbar class="white-color" style="background-color: transparent">
-    <button mat-icon-button (click)="snav.toggle()">
+    <button mat-icon-button (click)="snav.toggle()" class="pr-40px menu-icon">
       <mat-icon>menu</mat-icon>
     </button>
-    <span>{{ "translation.Greeting" | translate }}</span>
+    <span [matTooltip]="roleCurrentUser ? roleCurrentUser : ''"
+      >{{ "translation.Greeting" | translate }} {{ currentUser.login }}
+    </span>
     <span class="spacer"></span>
 
-    <button mat-icon-button (click)="changeLanguage('de')">
+    <button
+      mat-icon-button
+      matTooltip="Change Language"
+      (click)="changeLanguage('de')"
+    >
       <mat-icon [svgIcon]="currentFlag"></mat-icon>
     </button>
     <button mat-icon-button>
       <mat-icon>favorite</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="logout()">
       <i class="material-icons">panorama_fish_eye</i>
     </button>
   </mat-toolbar>
 
-  <mat-sidenav-container [hasBackdrop]="false">
+  <div>
+    <app-userlist *ngIf="prefix === 'list-user'"></app-userlist>
+  </div>
+
+  <mat-sidenav-container [hasBackdrop]="false" fxFlexFill>
     <mat-sidenav #snav fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{
-          nav
-        }}</a>
+      <mat-nav-list (click)="onMenuClick('list-user')">
+        <a matLine> {{ "COMMON.LIST_USER" | translate }} </a>
       </mat-nav-list>
     </mat-sidenav>
-
-    <mat-sidenav-content class="gradient">
-      <p></p>
-    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

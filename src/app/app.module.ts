@@ -11,9 +11,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { UserRestService } from './components/services/user.service';
+import { UserRestService } from './common/services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
@@ -23,10 +23,21 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { LanguageService } from './components/services/LanguageService';
+import { LanguageService } from './common/services/LanguageService';
 import { AppRoutingModule } from './app-routing-module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { RoleService } from './common/services/roleListService';
+import { SessionStorageService } from './common/services/sessionStorageService';
+import { LoggedAdminService } from './common/services/loggedAdminService';
+import { LoggedUserService } from './common/services/loggedUserService';
+import { InterceptorService } from './common/services/interceptor';
+import { UserlistComponent } from './components/dashboard/userlist/userlist.component';
 
 @NgModule({
   imports: [
@@ -57,6 +68,9 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     AppRoutingModule,
     MatListModule,
+    MatTooltipModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   declarations: [
     AppComponent,
@@ -64,10 +78,24 @@ import { MatListModule } from '@angular/material/list';
     RegisterComponent,
     DialogComponent,
     DashboardComponent,
+    UserlistComponent,
   ],
 
-  providers: [UserRestService, LanguageService],
+  providers: [
+    UserRestService,
+    LanguageService,
+    RoleService,
+    SessionStorageService,
+    LoggedAdminService,
+    LoggedUserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
+
   exports: [],
 })
 export class AppModule {}

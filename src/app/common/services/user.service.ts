@@ -28,8 +28,13 @@ export class UserRestService extends Rest {
   getUser() {
     return this.http.get(this.url + 'user/roles');
   }
-
+  getRoles() {
+    return this.http.get(this.url + 'user/roles');
+  }
   registrationUser(data: RegistrationData) {
     return this.http.post(this.url + 'user/add', data);
+  }
+  userAll() {
+    return this.http.get(this.url + 'user/all');
   }
 }

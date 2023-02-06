@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserRestService } from '../services/user.service';
+import { UserRestService } from '../../common/services/user.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { group } from '@angular/animations';
@@ -8,7 +8,10 @@ import { DialogComponent } from '../../common/dialog/dialog.component';
 import { TranslateService } from '@ngx-translate/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { LanguageService } from '../services/LanguageService';
+import { LanguageService } from '../../common/services/LanguageService';
+import { RoleService } from 'src/app/common/services/roleListService';
+import { SessionStorageService } from 'src/app/common/services/sessionStorageService';
+import { Login } from 'src/app/common/models/login';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +30,9 @@ export class LoginComponent implements OnInit {
     private userRestService: UserRestService,
     private dialog: MatDialog,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private sessionStorageService: SessionStorageService,
+    private roleService: RoleService
   ) {
     this.currentFlag = this.languageService.currentFlag;
   }
@@ -47,8 +52,14 @@ export class LoginComponent implements OnInit {
       })
       .subscribe(
         (dataResult) => {
-          console.log('dataResult', dataResult);
           if (dataResult) {
+            this.roleService.setRole((dataResult as Login).role);
+            this.sessionStorageService.setItem('currentUser', dataResult);
+            if (!this.roleService.isAdmin) {
+              this.router.navigate(['../shop']);
+            } else {
+              this.router.navigate(['../admin']);
+            }
           }
         },
         () => {

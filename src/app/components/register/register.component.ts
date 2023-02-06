@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { UserRestService } from './../services/user.service';
+import { UserRestService } from '../../common/services/user.service';
 import {
   FormBuilder,
   Validators,
@@ -10,13 +10,9 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { DialogComponent } from '../../common/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { LanguageService } from '../services/LanguageService';
+import { LanguageService } from '../../common/services/LanguageService';
 import { TranslateService } from '@ngx-translate/core';
-
-export interface Role {
-  id: string;
-  name: string;
-}
+import { Role } from '../../common/models/role';
 
 @Component({
   selector: 'app-register',

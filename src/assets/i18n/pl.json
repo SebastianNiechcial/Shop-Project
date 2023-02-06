@@ -13,7 +13,7 @@
     "BtnNext": "Dalej",
     "BackToLogin": "Powrót Do Logowania",
     "CreateAccount": "Stwórz Nowe Konto",
-    "Greeting": "Witaj {{form.name}}",
+    "Greeting": "Witaj",
     "ChangeLanguage": "Zmień Język",
     "Error_Login": "Błąd Logowania",
     "Error_Login_Message": "Zły Login lub Hasło",
