@@ -5,10 +5,12 @@ import { RegisterComponent } from './components/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoggedUserService } from './common/services/loggedUserService';
 import { LoggedAdminService } from './common/services/loggedAdminService';
+import { UserlistComponent } from './components/dashboard/userlist/userlist.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'userList', component: UserlistComponent },
   {
     path: 'shop',
     component: DashboardComponent,

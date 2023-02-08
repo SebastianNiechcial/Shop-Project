@@ -38,6 +38,8 @@ import { LoggedAdminService } from './common/services/loggedAdminService';
 import { LoggedUserService } from './common/services/loggedUserService';
 import { InterceptorService } from './common/services/interceptor';
 import { UserlistComponent } from './components/dashboard/userlist/userlist.component';
+import { MatSortModule } from '@angular/material/sort';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -71,6 +73,8 @@ import { UserlistComponent } from './components/dashboard/userlist/userlist.comp
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSortModule,
+    FlexLayoutModule,
   ],
   declarations: [
     AppComponent,

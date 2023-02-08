@@ -1,14 +1,13 @@
 <div class="login-box">
   <div class="form">
-    <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="end start">
       <button mat-icon-button (click)="changeLanguage('de')">
         <mat-icon [svgIcon]="currentFlag"></mat-icon>
       </button>
     </div>
-    <form [formGroup]="form">
+    <form [formGroup]="form" fxLayout="column">
       <h2 class="form-title">{{ "translation.Register" | translate }}</h2>
 
-      <br />
       <mat-form-field>
         <mat-label>{{ "translation.Email" | translate }}</mat-label>
         <input
@@ -34,7 +33,7 @@
 
       <mat-form-field>
         <mat-label>{{ "translation.LastName" | translate }}</mat-label>
-        <input required formControlName="lastName" type="password" matInput />
+        <input required formControlName="lastName" matInput />
 
         <mat-error *ngIf="form.get('lastName')?.hasError('required')">{{
           "translation.InputReq" | translate

@@ -19,5 +19,13 @@
     "Error_Login_Message": "Login oder Passwort is falsch",
     "Error_Registration": "Registrieren Error",
     "Error_Registration_Message": "Überprüfen Sie Ihre Angaben"
+  },
+  "User_List": {
+    "Name": "Name",
+    "LastName": "Nachname",
+    "Login": "Anmeldung",
+    "Role": "Anmeldung",
+    "Action": "Aktion",
+    "User_List": "Benutzerliste"
   }
 }

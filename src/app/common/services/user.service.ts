@@ -37,4 +37,7 @@ export class UserRestService extends Rest {
   userAll() {
     return this.http.get(this.url + 'user/all');
   }
+  deleteUser() {
+    return this.http.delete(this.url + 'user/id');
+  }
 }

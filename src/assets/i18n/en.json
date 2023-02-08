@@ -19,5 +19,13 @@
     "Error_Login_Message": "Wrong Username or Password",
     "Error_Registration": "Registration Error",
     "Error_Registration_Message": "Check your details"
+  },
+  "User_List": {
+    "Name": "Name",
+    "LastName": "LastName",
+    "Login": "Login",
+    "Role": "Role",
+    "Action": "Actions",
+    "User_List": "User List"
   }
 }

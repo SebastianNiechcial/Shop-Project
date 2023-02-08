@@ -49,9 +49,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
   changeLanguage(language: string): void {
     this.languageService.ChangeLanguage(language);
     this.currentFlag = this.languageService.currentFlag;

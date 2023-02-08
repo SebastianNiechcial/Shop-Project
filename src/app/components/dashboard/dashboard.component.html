@@ -1,10 +1,15 @@
 <div class="gradient">
   <mat-toolbar class="white-color" style="background-color: transparent">
-    <button mat-icon-button (click)="snav.toggle()" class="pr-40px menu-icon">
+    <button
+      mat-icon-button
+      (click)="sidenav.toggle()"
+      class="pr-40px menu-icon"
+    >
       <mat-icon>menu</mat-icon>
     </button>
     <span [matTooltip]="roleCurrentUser ? roleCurrentUser : ''"
-      >{{ "translation.Greeting" | translate }} {{ currentUser.login }}
+      >{{ "translation.Greeting" | translate }} {{ currentUser.name }}
+      {{ currentUser.lastName }}
     </span>
     <span class="spacer"></span>
 
@@ -27,10 +32,10 @@
     <app-userlist *ngIf="prefix === 'list-user'"></app-userlist>
   </div>
 
-  <mat-sidenav-container [hasBackdrop]="false" fxFlexFill>
-    <mat-sidenav #snav fixedTopGap="56">
+  <mat-sidenav-container class="gradient" [hasBackdrop]="false" fxFlexFill>
+    <mat-sidenav #sidenav class="mar-64px">
       <mat-nav-list (click)="onMenuClick('list-user')">
-        <a matLine> {{ "COMMON.LIST_USER" | translate }} </a>
+        <a matLine> {{ "User_List.User_List" | translate }} </a>
       </mat-nav-list>
     </mat-sidenav>
   </mat-sidenav-container>

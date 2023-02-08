@@ -19,5 +19,13 @@
     "Error_Login_Message": "Zły Login lub Hasło",
     "Error_Registration": "Błąd Rejestracji",
     "Error_Registration_Message": "Sprawdź swoje dane"
+  },
+  "User_List": {
+    "Name": "Imię",
+    "LastName": "Nazwisko",
+    "Login": "Login",
+    "Role": "Rola",
+    "Action": "Akcje",
+    "User_List": "Lista Użytkowników"
   }
 }

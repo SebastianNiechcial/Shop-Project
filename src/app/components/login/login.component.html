@@ -1,15 +1,15 @@
 <div class="login-box">
   <div class="form">
-    <div fxLayout="row" fxLayoutAlign="center center">
+    <div fxLayout="row" fxLayoutAlign="end start">
       <button mat-icon-button (click)="changeLanguage('de')">
         <mat-icon [svgIcon]="currentFlag"></mat-icon>
       </button>
     </div>
 
-    <form [formGroup]="form">
+    <form [formGroup]="form" fxLayout="column">
       <h2 class="form-title">{{ "translation.Login" | translate }}</h2>
 
-      <mat-form-field class="">
+      <mat-form-field>
         <mat-label>{{ "translation.Email" | translate }}</mat-label>
         <input
           id="User"
@@ -20,17 +20,12 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="">
+      <mat-form-field>
         <mat-label>{{ "translation.Password" | translate }}</mat-label>
         <input id="Pass" formControlName="password" type="password" matInput />
       </mat-form-field>
 
-      <button
-        mat-raised-button
-        color="primary"
-        class=""
-        (click)="SubmitLoginDetails()"
-      >
+      <button mat-raised-button color="primary" (click)="SubmitLoginDetails()">
         {{ "translation.BtnNext" | translate }}
       </button>
 

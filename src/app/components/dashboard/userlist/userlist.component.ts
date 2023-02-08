@@ -14,6 +14,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconModule } from '@angular/material/icon';
+import { Sort } from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
+
 @Component({
   selector: 'app-userlist',
   templateUrl: './userlist.component.html',
@@ -26,12 +29,45 @@ export class UserlistComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['name', 'lastName', 'login', 'role', 'action'];
   dataSource: MatTableDataSource<UserList> = new MatTableDataSource<UserList>();
   roleList!: Role[];
+  sortedData!: UserList[];
 
   constructor(
     private userRestService: UserRestService,
     private sessionStorageService: SessionStorageService,
     private translateService: TranslateService
-  ) {}
+  ) {
+    this.dataSource.sort = this.sort;
+  }
+
+  sortData(sort: Sort) {
+    const data = this.dataSource.data.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
+    }
+
+    this.sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name':
+          return this.compare(a.name, b.name, isAsc);
+        case 'lastName':
+          return this.compare(a.lastName, b.lastName, isAsc);
+        case 'login':
+          return this.compare(a.login, b.login, isAsc);
+        case 'role':
+          return this.compare(a.role, b.role, isAsc);
+        default:
+          return 0;
+      }
+    });
+
+    this.dataSource.data = this.sortedData;
+  }
+
+  compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
 
   ngOnInit(): void {
     forkJoin([
@@ -57,6 +93,8 @@ export class UserlistComponent implements OnInit, AfterViewInit {
   }
 
   onDelete() {
-    console.log('delete');
+    return this.userRestService.deleteUser().subscribe((response) => {
+      console.log('delete');
+    });
   }
 }
