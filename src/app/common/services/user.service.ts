@@ -25,8 +25,8 @@ export class UserRestService extends Rest {
     return this.http.post(this.url + 'user/login', data);
   }
 
-  getUser() {
-    return this.http.get(this.url + 'user/roles');
+  getUser(id: number) {
+    return this.http.get(this.url + 'user/get-user/' + id);
   }
   getRoles() {
     return this.http.get(this.url + 'user/roles');
@@ -37,7 +37,10 @@ export class UserRestService extends Rest {
   userAll() {
     return this.http.get(this.url + 'user/all');
   }
-  deleteUser() {
-    return this.http.delete(this.url + 'user/id');
+  deleteUser(id: number) {
+    return this.http.delete(this.url + 'user/delete/' + id);
+  }
+  editUser(data: RegistrationData) {
+    return this.http.put(this.url + 'user/edit', data);
   }
 }

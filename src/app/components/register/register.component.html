@@ -1,95 +1,101 @@
 <div class="login-box">
-  <div class="form">
-    <div fxLayout="row" fxLayoutAlign="end start">
-      <button mat-icon-button (click)="changeLanguage('de')">
-        <mat-icon [svgIcon]="currentFlag"></mat-icon>
-      </button>
-    </div>
-    <form [formGroup]="form" fxLayout="column">
-      <h2 class="form-title">{{ "translation.Register" | translate }}</h2>
-
-      <mat-form-field>
-        <mat-label>{{ "translation.Email" | translate }}</mat-label>
-        <input
-          required
-          formControlName="login"
-          type="email"
-          matInput
-          placeholder="Ex. pat@example.com"
-        />
-
-        <mat-error *ngIf="form.get('login')?.hasError('required')">{{
-          "translation.InputReq" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>{{ "translation.Name" | translate }}</mat-label>
-        <input required formControlName="name" matInput />
-        <mat-error *ngIf="form.get('name')?.hasError('required')">{{
-          "translation.InputReq" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>{{ "translation.LastName" | translate }}</mat-label>
-        <input required formControlName="lastName" matInput />
-
-        <mat-error *ngIf="form.get('lastName')?.hasError('required')">{{
-          "translation.InputReq" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>{{ "translation.Password" | translate }}</mat-label>
-        <input required formControlName="password" type="password" matInput />
-
-        <mat-error *ngIf="form.get('password')?.hasError('required')">{{
-          "translation.InputReq" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label> {{ "translation.RptPassword" | translate }}</mat-label>
-        <input
-          required
-          formControlName="rptpassword"
-          type="password"
-          matInput
-        />
-        <mat-error *ngIf="form.get('name')?.hasError('required')">{{
-          "translation.InputReq" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>{{ "translation.Role" | translate }}</mat-label>
-        <mat-select required formControlName="role">
-          <mat-option *ngFor="let role of roleList" [value]="role.id">
-            {{ role.name }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.get('role')?.hasError('required')">{{
-          "translation.InputReq" | translate
-        }}</mat-error>
-      </mat-form-field>
-
-      <button
-        (click)="register()"
-        mat-raised-button
-        type="submit"
-        color="primary"
-        class=""
-      >
-        {{ "translation.BtnNext" | translate }}
-      </button>
-      <div class="links">
-        <div>
-          <a href="#">{{ "translation.ForgetPassword" | translate }}</a>
-        </div>
-
-        <a routerLink="/login"> {{ "translation.BackToLogin" | translate }}</a>
+  <mat-card>
+    <div class="form">
+      <div fxLayout="row" fxLayoutAlign="end start">
+        <button mat-icon-button (click)="changeLanguage('de')">
+          <mat-icon [svgIcon]="currentFlag"></mat-icon>
+        </button>
       </div>
-    </form>
-  </div>
+      <form [formGroup]="form" fxLayout="column">
+        <h2 class="form-title">
+          {{
+            (idUser ? "translation.Edit" : "translation.Register") | translate
+          }}
+        </h2>
+
+        <mat-form-field>
+          <mat-label>{{ "translation.Email" | translate }}</mat-label>
+          <input
+            required
+            formControlName="login"
+            type="email"
+            matInput
+            placeholder="Ex. pat@example.com"
+          />
+
+          <mat-error *ngIf="form.get('login')?.hasError('required')">{{
+            "translation.InputReq" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{ "translation.Name" | translate }}</mat-label>
+          <input required formControlName="name" matInput />
+          <mat-error *ngIf="form.get('name')?.hasError('required')">{{
+            "translation.InputReq" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{ "translation.LastName" | translate }}</mat-label>
+          <input required formControlName="lastName" matInput />
+
+          <mat-error *ngIf="form.get('lastName')?.hasError('required')">{{
+            "translation.InputReq" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="!idUser">
+          <mat-label>{{ "translation.Password" | translate }}</mat-label>
+          <input required formControlName="password" type="password" matInput />
+
+          <mat-error *ngIf="form.get('password')?.hasError('required')">{{
+            "translation.InputReq" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="!idUser">
+          <mat-label> {{ "translation.RptPassword" | translate }}</mat-label>
+          <input
+            required
+            formControlName="rptpassword"
+            type="password"
+            matInput
+          />
+          <mat-error *ngIf="form.get('name')?.hasError('required')">{{
+            "translation.InputReq" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>{{ "translation.Role" | translate }}</mat-label>
+          <mat-select required formControlName="role">
+            <mat-option *ngFor="let role of roleList" [value]="role.id">
+              {{ role.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('role')?.hasError('required')">{{
+            "translation.InputReq" | translate
+          }}</mat-error>
+        </mat-form-field>
+
+        <button
+          (click)="register()"
+          mat-raised-button
+          type="submit"
+          color="primary"
+          class=""
+        >
+          {{
+            (idUser ? "translation.EditBtn" : "translation.BtnNext") | translate
+          }}
+        </button>
+        <div class="links">
+          <a routerLink="/login">
+            {{ "translation.BackToLogin" | translate }}</a
+          >
+        </div>
+      </form>
+    </div>
+  </mat-card>
 </div>

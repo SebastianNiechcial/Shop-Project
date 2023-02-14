@@ -40,6 +40,7 @@ import { InterceptorService } from './common/services/interceptor';
 import { UserlistComponent } from './components/dashboard/userlist/userlist.component';
 import { MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DeleteFormComponent } from './common/dialog/delete-form/delete-form.component';
 
 @NgModule({
   imports: [
@@ -83,6 +84,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DialogComponent,
     DashboardComponent,
     UserlistComponent,
+    DeleteFormComponent,
   ],
 
   providers: [

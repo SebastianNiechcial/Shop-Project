@@ -21,6 +21,11 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [LoggedAdminService],
   },
+  {
+    path: 'edit-user/:id',
+    canActivate: [LoggedAdminService],
+    component: RegisterComponent,
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 

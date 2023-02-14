@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserRestService } from '../../common/services/user.service';
 import {
   FormBuilder,
@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
   form!: FormGroup;
   roleList!: Role[];
   currentFlag!: string;
+  idUser!: number | null;
 
   constructor(
     private languageService: LanguageService,
@@ -30,12 +31,15 @@ export class RegisterComponent implements OnInit {
     private userRestService: UserRestService,
     private dialog: MatDialog,
     private router: Router,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private route: ActivatedRoute
   ) {
     this.currentFlag = this.languageService.currentFlag;
   }
 
   ngOnInit(): void {
+    this.idUser = Number(this.route.snapshot.paramMap.get('id'));
+
     this.form = this.fb.group({
       login: ['', [Validators.required]],
       name: ['', [Validators.required]],
@@ -44,9 +48,15 @@ export class RegisterComponent implements OnInit {
       rptpassword: ['', [this.validPassword()]],
       role: ['', [Validators.required]],
     });
-    this.userRestService.getUser().subscribe((result) => {
+    this.userRestService.getRoles().subscribe((result) => {
       this.roleList = result as Role[];
     });
+
+    if (this.idUser) {
+      this.userRestService.getUser(this.idUser).subscribe((user) => {
+        this.form.patchValue(user);
+      });
+    }
   }
 
   private validPassword(): ValidatorFn {
@@ -73,9 +83,16 @@ export class RegisterComponent implements OnInit {
     const values = this.form.getRawValue();
     delete values.rptpassword;
 
-    this.userRestService.registrationUser(values).subscribe(
+    if (this.idUser) {
+      delete values.passwordl;
+      values.id = this.idUser;
+    }
+
+    (this.idUser
+      ? this.userRestService.editUser(values)
+      : this.userRestService.registrationUser(values)
+    ).subscribe(
       (response) => {
-        console.log(response);
         if (response === 'Added') {
           this.router.navigate(['../login']);
         }

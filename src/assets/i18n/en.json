@@ -18,7 +18,9 @@
     "Error_Login": "Login Error",
     "Error_Login_Message": "Wrong Username or Password",
     "Error_Registration": "Registration Error",
-    "Error_Registration_Message": "Check your details"
+    "Error_Registration_Message": "Check your details",
+    "Edit": "Edit User",
+    "EditBtn": "Edit"
   },
   "User_List": {
     "Name": "Name",
@@ -26,6 +28,10 @@
     "Login": "Login",
     "Role": "Role",
     "Action": "Actions",
-    "User_List": "User List"
+    "User_List": "User List",
+    "Dialog": {
+      "Header": "Message",
+      "Message": "Do you want to delete the User ?"
+    }
   }
 }

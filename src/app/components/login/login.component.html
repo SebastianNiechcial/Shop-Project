@@ -1,43 +1,54 @@
 <div class="login-box">
-  <div class="form">
-    <div fxLayout="row" fxLayoutAlign="end start">
-      <button mat-icon-button (click)="changeLanguage('de')">
-        <mat-icon [svgIcon]="currentFlag"></mat-icon>
-      </button>
-    </div>
-
-    <form [formGroup]="form" fxLayout="column">
-      <h2 class="form-title">{{ "translation.Login" | translate }}</h2>
-
-      <mat-form-field>
-        <mat-label>{{ "translation.Email" | translate }}</mat-label>
-        <input
-          id="User"
-          formControlName="username"
-          type="email"
-          matInput
-          placeholder="Ex. pat@example.com"
-        />
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>{{ "translation.Password" | translate }}</mat-label>
-        <input id="Pass" formControlName="password" type="password" matInput />
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" (click)="SubmitLoginDetails()">
-        {{ "translation.BtnNext" | translate }}
-      </button>
-
-      <div class="links">
-        <div>
-          <a href="#">{{ "translation.ForgetPassword" | translate }}</a>
-        </div>
-
-        <a routerLink="/register">{{
-          "translation.CreateAccount" | translate
-        }}</a>
+  <mat-card>
+    <div class="form">
+      <div fxLayout="row" fxLayoutAlign="end start">
+        <button mat-icon-button (click)="changeLanguage('de')">
+          <mat-icon [svgIcon]="currentFlag"></mat-icon>
+        </button>
       </div>
-    </form>
-  </div>
+
+      <form [formGroup]="form" fxLayout="column">
+        <h2 class="form-title">{{ "translation.Login" | translate }}</h2>
+
+        <mat-form-field>
+          <mat-label>{{ "translation.Email" | translate }}</mat-label>
+          <input
+            id="User"
+            formControlName="username"
+            type="email"
+            matInput
+            placeholder="Ex. pat@example.com"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>{{ "translation.Password" | translate }}</mat-label>
+          <input
+            id="Pass"
+            formControlName="password"
+            type="password"
+            matInput
+          />
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="SubmitLoginDetails()"
+        >
+          {{ "translation.BtnNext" | translate }}
+        </button>
+
+        <div class="links">
+          <div>
+            <a href="#">{{ "translation.ForgetPassword" | translate }}</a>
+          </div>
+
+          <a routerLink="/register">{{
+            "translation.CreateAccount" | translate
+          }}</a>
+        </div>
+      </form>
+    </div>
+  </mat-card>
 </div>

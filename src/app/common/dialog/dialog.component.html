@@ -2,6 +2,28 @@
 <div class="dialog" mat-dialog-content>
   {{ data.message }}
 </div>
-<div class="button" mat-dialog-actions>
-  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+<div
+  fxLayout="row"
+  fxLayoutAlign="end center"
+  class="button"
+  mat-dialog-actions
+>
+  <button
+    mat-button
+    *ngIf="!data.isShowConfirmButton"
+    mat-dialog-close
+    cdkFocusInitial
+  >
+    Ok
+  </button>
+  <button mat-button *ngIf="data.isShowConfirmButton" (click)="onConfirm(true)">
+    {{ "Common.Yes" | translate }}
+  </button>
+  <button
+    mat-button
+    *ngIf="data.isShowConfirmButton"
+    (click)="onConfirm(false)"
+  >
+    {{ "Common.No" | translate }}
+  </button>
 </div>

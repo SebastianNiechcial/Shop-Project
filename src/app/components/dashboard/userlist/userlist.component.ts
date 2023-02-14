@@ -7,7 +7,7 @@ import { UserRestService } from '../../../common/services/user.service';
 import { SessionStorageService } from '../../../common/services/sessionStorageService';
 import { UserList } from 'src/app/common/models/userData';
 import { Role } from 'src/app/common/models/role';
-import { forkJoin } from 'rxjs';
+import { forkJoin, BehaviorSubject, switchMap } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconRegistry } from '@angular/material/icon';
 import { TranslateService } from '@ngx-translate/core';
@@ -16,6 +16,10 @@ import { MatIcon } from '@angular/material/icon';
 import { MatIconModule } from '@angular/material/icon';
 import { Sort } from '@angular/material/sort';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/common/dialog/dialog.component';
+import { LanguageService } from 'src/app/common/services/LanguageService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userlist',
@@ -30,11 +34,15 @@ export class UserlistComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<UserList> = new MatTableDataSource<UserList>();
   roleList!: Role[];
   sortedData!: UserList[];
+  formInit$!: BehaviorSubject<boolean>;
 
   constructor(
     private userRestService: UserRestService,
     private sessionStorageService: SessionStorageService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private dialog: MatDialog,
+    private languageService: LanguageService,
+    private router: Router
   ) {
     this.dataSource.sort = this.sort;
   }
@@ -69,14 +77,21 @@ export class UserlistComponent implements OnInit, AfterViewInit {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
-  ngOnInit(): void {
-    forkJoin([
-      this.userRestService.userAll(),
-      this.userRestService.getUser(),
-    ]).subscribe((data) => {
-      this.dataSource.data = data[0] as UserList[];
-      this.roleList = data[1] as Role[];
-    });
+  ngOnInit() {
+    this.formInit$ = new BehaviorSubject<boolean>(true);
+    this.formInit$
+      .pipe(
+        switchMap(() =>
+          forkJoin([
+            this.userRestService.userAll(),
+            this.userRestService.getRoles(),
+          ])
+        )
+      )
+      .subscribe((data) => {
+        this.dataSource.data = data[0] as UserList[];
+        this.roleList = data[1] as Role[];
+      });
   }
 
   ngAfterViewInit(): void {
@@ -88,13 +103,30 @@ export class UserlistComponent implements OnInit, AfterViewInit {
     return this.roleList.find((role) => role.id === id)?.name;
   }
 
-  onEdit() {
-    console.log('edit');
+  editUser(element: UserList) {
+    this.router.navigate(['../edit-user', element.id]);
   }
 
-  onDelete() {
-    return this.userRestService.deleteUser().subscribe((response) => {
-      console.log('delete');
+  onDelete(element: UserList) {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        header: this.translateService.instant('USER_LIST.DIALOG.HEADER'),
+        message: this.translateService.instant('USER_LIST.DIALOG.MESSAGE'),
+        isShowConfirmButton: true,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.userRestService.deleteUser(element.id).subscribe(
+          () => {
+            this.formInit$.next(true);
+          },
+          (error) => {
+            console.error(error);
+          }
+        );
+      }
     });
   }
 }

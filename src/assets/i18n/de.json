@@ -18,7 +18,9 @@
     "Error_Login": "Login Fehler",
     "Error_Login_Message": "Login oder Passwort is falsch",
     "Error_Registration": "Registrieren Error",
-    "Error_Registration_Message": "Überprüfen Sie Ihre Angaben"
+    "Error_Registration_Message": "Überprüfen Sie Ihre Angaben",
+    "Edit": "Auflage Benutzer",
+    "EditBtn": "Bearbeiten"
   },
   "User_List": {
     "Name": "Name",
@@ -26,6 +28,10 @@
     "Login": "Anmeldung",
     "Role": "Anmeldung",
     "Action": "Aktion",
-    "User_List": "Benutzerliste"
+    "User_List": "Benutzerliste",
+    "Dialog": {
+      "Header": "Nachricht",
+      "Message": "Möchten Sie den Benutzer löschen"
+    }
   }
 }
