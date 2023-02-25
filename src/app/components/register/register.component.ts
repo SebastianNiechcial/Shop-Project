@@ -100,8 +100,10 @@ export class RegisterComponent implements OnInit {
       () => {
         this.dialog.open(DialogComponent, {
           data: {
-            header: this.translate.instant('translation.Error_Login'),
-            message: this.translate.instant('translation.Error_Login_Message'),
+            header: this.translate.instant('translation.ErrorRegistration'),
+            message: this.translate.instant(
+              'translation.ErrorRegistrationMessage'
+            ),
             class: 'error-style',
           },
         });

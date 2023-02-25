@@ -15,7 +15,7 @@
 
     <button
       mat-icon-button
-      matTooltip="Change Language"
+      [matTooltip]="languageName()"
       (click)="changeLanguage('de')"
     >
       <mat-icon [svgIcon]="currentFlag"></mat-icon>
@@ -35,7 +35,7 @@
   <mat-sidenav-container class="gradient" [hasBackdrop]="false" fxFlexFill>
     <mat-sidenav #sidenav class="mar-64px">
       <mat-nav-list (click)="onMenuClick('list-user')">
-        <a matLine> {{ "User_List.User_List" | translate }} </a>
+        <a matLine> {{ "UserList.UserList" | translate }} </a>
       </mat-nav-list>
     </mat-sidenav>
   </mat-sidenav-container>

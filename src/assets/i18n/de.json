@@ -15,20 +15,20 @@
     "CreateAccount": "Ein neues Konto erstellen ",
     "Greeting": "Hallo",
     "ChangeLanguage": "Sprache ändern",
-    "Error_Login": "Login Fehler",
-    "Error_Login_Message": "Login oder Passwort is falsch",
-    "Error_Registration": "Registrieren Error",
-    "Error_Registration_Message": "Überprüfen Sie Ihre Angaben",
+    "ErrorLogin": "Login Fehler",
+    "ErrorLoginMessage": "Login oder Passwort is falsch",
+    "ErrorRegistration": "Registrieren Error",
+    "ErrorRegistrationMessage": "Überprüfen Sie Ihre Angaben",
     "Edit": "Auflage Benutzer",
     "EditBtn": "Bearbeiten"
   },
-  "User_List": {
+  "UserList": {
     "Name": "Name",
     "LastName": "Nachname",
     "Login": "Anmeldung",
     "Role": "Anmeldung",
     "Action": "Aktion",
-    "User_List": "Benutzerliste",
+    "UserList": "Benutzerliste",
     "Dialog": {
       "Header": "Nachricht",
       "Message": "Möchten Sie den Benutzer löschen"

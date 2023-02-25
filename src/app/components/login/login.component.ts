@@ -65,10 +65,8 @@ export class LoginComponent implements OnInit {
         () => {
           this.dialog.open(DialogComponent, {
             data: {
-              header: this.translate.instant('translation.Error_Login'),
-              message: this.translate.instant(
-                'translation.Error_Login_Message'
-              ),
+              header: this.translate.instant('translation.ErrorLogin'),
+              message: this.translate.instant('translation.ErrorLoginMessage'),
               class: 'error-style',
             },
           });

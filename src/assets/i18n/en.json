@@ -15,20 +15,20 @@
     "CreateAccount": "Create New Account",
     "Greeting": "Hello",
     "ChangeLanguage": "Change Language",
-    "Error_Login": "Login Error",
-    "Error_Login_Message": "Wrong Username or Password",
-    "Error_Registration": "Registration Error",
-    "Error_Registration_Message": "Check your details",
+    "ErrorLogin": "Login Error",
+    "ErrorLoginMessage": "Wrong Username or Password",
+    "ErrorRegistration": "Registration Error",
+    "ErrorRegistrationMessage": "Check your details",
     "Edit": "Edit User",
     "EditBtn": "Edit"
   },
-  "User_List": {
+  "UserList": {
     "Name": "Name",
     "LastName": "LastName",
     "Login": "Login",
     "Role": "Role",
     "Action": "Actions",
-    "User_List": "User List",
+    "UserList": "User List",
     "Dialog": {
       "Header": "Message",
       "Message": "Do you want to delete the User ?"

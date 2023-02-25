@@ -61,4 +61,7 @@ export class DashboardComponent implements OnInit {
     this.sidenav.close();
     this.prefix = prefix;
   }
+  languageName(): string {
+    return this.languageService.currentLanguage;
+  }
 }
