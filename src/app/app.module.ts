@@ -41,8 +41,8 @@ import { UserlistComponent } from './components/dashboard/userlist/userlist.comp
 import { MatSortModule } from '@angular/material/sort';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DeleteFormComponent } from './common/dialog/delete-form/delete-form.component';
-import { AddProductComponent } from './components/dashboard/add-product/add-product.component';
 import { ProductlistComponent } from './components/dashboard/productlist/productlist.component';
+import { AddproductComponent } from './components/dashboard/add-product/addproduct.component';
 
 @NgModule({
   imports: [
@@ -87,8 +87,8 @@ import { ProductlistComponent } from './components/dashboard/productlist/product
     DashboardComponent,
     UserlistComponent,
     DeleteFormComponent,
-    AddProductComponent,
     ProductlistComponent,
+    AddproductComponent,
   ],
 
   providers: [
