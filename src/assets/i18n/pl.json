@@ -29,9 +29,28 @@
     "Role": "Rola",
     "Action": "Akcje",
     "UserList": "Lista Użytkowników",
+    "DeleteSuccess": "Usunięcie zakończyło się sukcesem",
     "Dialog": {
       "Header": "Wiadomość",
       "Message": "Czy na pewno chcesz usunąć użytkownika"
     }
+  },
+  "AddProduct": {
+    "ViewTitle": "Podgląd Zdjęcia",
+    "Title": "Dodaj Produkt",
+    "Producer": "Producent",
+    "Description": "Opis",
+    "Img": "Zdjęcie",
+    "Tags": "Tagi",
+    "Price": "Cena",
+    "Name": "Nazwa",
+    "Add": "Dodaj Produkt",
+    "Success": "Produkt Dodano",
+    "Updated": "Dokonano Zmian"
+  },
+  "Common": {
+    "Yes": "Tak",
+    "No": "Nie",
+    "Close": "Zamknij"
   }
 }

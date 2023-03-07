@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { DialogComponent } from './common/dialog/dialog.component';
+import { ProductRestService } from './common/services/productRestService';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -43,6 +44,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DeleteFormComponent } from './common/dialog/delete-form/delete-form.component';
 import { ProductlistComponent } from './components/dashboard/productlist/productlist.component';
 import { AddproductComponent } from './components/dashboard/add-product/addproduct.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ImagedialogComponent } from './common/imagedialog/imagedialog.component';
 
 @NgModule({
   imports: [
@@ -78,6 +81,7 @@ import { AddproductComponent } from './components/dashboard/add-product/addprodu
     MatPaginatorModule,
     MatSortModule,
     FlexLayoutModule,
+    MatSnackBarModule,
   ],
   declarations: [
     AppComponent,
@@ -89,6 +93,7 @@ import { AddproductComponent } from './components/dashboard/add-product/addprodu
     DeleteFormComponent,
     ProductlistComponent,
     AddproductComponent,
+    ImagedialogComponent,
   ],
 
   providers: [
@@ -98,6 +103,7 @@ import { AddproductComponent } from './components/dashboard/add-product/addprodu
     SessionStorageService,
     LoggedAdminService,
     LoggedUserService,
+    ProductRestService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorService,

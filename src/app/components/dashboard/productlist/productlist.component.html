@@ -1,1 +1,15 @@
-<p>productlist works!</p>
+<mat-card>
+  <mat-card-content>
+    <mat-card-header class="input-style" fxFlex="100%">
+      <div fxflex="row"></div>
+
+      <div
+        *ngIf="product"
+        class="pointer-cursor"
+        matTooltip="{{ 'IMAGE_DIALOG.VIEW_TITLE' | translate }}"
+      ></div>
+
+      <mat-icon (click)="onShowImage()">image</mat-icon>
+    </mat-card-header>
+  </mat-card-content>
+</mat-card>

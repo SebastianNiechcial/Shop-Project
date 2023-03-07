@@ -12,4 +12,5 @@ export type ProductData = {
   name: string;
   userId: number;
   seller?: string;
+  id?: number;
 };

@@ -1,4 +1,5 @@
-import { Component, NgModule, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { OnInit, AfterViewInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -8,14 +9,8 @@ import { SessionStorageService } from '../../../common/services/sessionStorageSe
 import { UserList } from 'src/app/common/models/userData';
 import { Role } from 'src/app/common/models/role';
 import { forkJoin, BehaviorSubject, switchMap } from 'rxjs';
-import { MatTableModule } from '@angular/material/table';
-import { MatIconRegistry } from '@angular/material/icon';
 import { TranslateService } from '@ngx-translate/core';
-import { MatIconButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MatIconModule } from '@angular/material/icon';
 import { Sort } from '@angular/material/sort';
-import { MatSortModule } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/common/dialog/dialog.component';
 import { LanguageService } from 'src/app/common/services/LanguageService';
@@ -41,8 +36,8 @@ export class UserlistComponent implements OnInit, AfterViewInit {
     private sessionStorageService: SessionStorageService,
     private translateService: TranslateService,
     private dialog: MatDialog,
-    private languageService: LanguageService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.dataSource.sort = this.sort;
   }
@@ -110,8 +105,8 @@ export class UserlistComponent implements OnInit, AfterViewInit {
   onDelete(element: UserList) {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
-        header: this.translateService.instant('USER_LIST.DIALOG.HEADER'),
-        message: this.translateService.instant('USER_LIST.DIALOG.MESSAGE'),
+        header: this.translateService.instant('UserList.Dialog.Header'),
+        message: this.translateService.instant('UserList.Dialog.Message'),
         isShowConfirmButton: true,
       },
     });
@@ -121,6 +116,10 @@ export class UserlistComponent implements OnInit, AfterViewInit {
         this.userRestService.deleteUser(element.id).subscribe(
           () => {
             this.formInit$.next(true);
+            const message: string = this.translateService.instant(
+              'UserList.DeleteSuccess'
+            );
+            this._snackBar.open(message, undefined, { duration: 1500 });
           },
           (error) => {
             console.error(error);

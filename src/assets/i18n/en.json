@@ -29,9 +29,28 @@
     "Role": "Role",
     "Action": "Actions",
     "UserList": "User List",
+    "DeleteSuccess": "The deletion was successful",
     "Dialog": {
       "Header": "Message",
       "Message": "Do you want to delete the User ?"
     }
+  },
+  "AddProduct": {
+    "ViewTitle": "Image Preview",
+    "Title": "Add Product",
+    "Producer": "Manufactorer",
+    "Description": "Description",
+    "Img": "Image",
+    "Tags": "Tags",
+    "Price": "Price",
+    "Name": "Name",
+    "Add": "Add Product",
+    "Success": "Product Added",
+    "Updated": "Changes Were Made"
+  },
+  "Common": {
+    "Yes": "Yes",
+    "No": "No",
+    "Close": "Close"
   }
 }

@@ -29,9 +29,29 @@
     "Role": "Anmeldung",
     "Action": "Aktion",
     "UserList": "Benutzerliste",
+    "DeleteSuccess": "Die Löschung war erfolgreich",
     "Dialog": {
       "Header": "Nachricht",
       "Message": "Möchten Sie den Benutzer löschen"
     }
+  },
+  "AddProduct": {
+    "ViewTitle": "Vorschau von Fotos",
+    "Title": "Produkt hinzufügen",
+    "Producer": "Produzent",
+    "Description": "Beschreibung",
+    "Img": "Foto",
+    "Tags": "Tags",
+    "Price": "Preis",
+    "Name": "Name",
+    "Add": "Produkt hinzufügen",
+    "Success": "Hinzugefügtes Produkt",
+    "Updated": "Änderungen Vorgenommen Wurden"
+  },
+
+  "Common": {
+    "Yes": "Ja",
+    "No": "Nein",
+    "Close": "schließe"
   }
 }

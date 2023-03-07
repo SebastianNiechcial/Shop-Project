@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{ "IMAGE_DIALOG.VIEW_TITLE" | translate }}</h1>
+<div mat-dialog-content>
+  <img src="'http://localhost/8443/images/' + data.image" class="img-style" />
+</div>
+<div fxLayout="row" fxLayoutAlign="end center" mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>
+    {{ "COMMON.CLOSE" | translate }}
+  </button>
+</div>

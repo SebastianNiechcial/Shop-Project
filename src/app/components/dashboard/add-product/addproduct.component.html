@@ -1,13 +1,114 @@
-<mat-card>
-  <mat-card-content>
-    <mat-card-header class="input-style" fxFlex="100%">
-      <div fxflex="row">{{ title | translate }}</div>
-      <div
-        *ngIf="product"
-        class="pointer-cursor"
-        matTooltip="{{ 'IMAGE_DIALOG.VIEW_TITLE' | translate }}"
-      ></div>
-      <mat-icon (click)="onShowImage()">image</mat-icon>
-    </mat-card-header>
-  </mat-card-content>
-</mat-card>
+<div fxLayoutAlign="center space-between">
+  <mat-card class="card">
+    <mat-card-content>
+      <mat-card-header>
+        <mat-card-title> </mat-card-title>
+        <div class="header">
+          <div>{{ "AddProduct.Title" | translate }}</div>
+
+          <div
+            *ngIf="product"
+            class="pointer-cursor"
+            matTooltip="{{ 'AddProduct.ViewTitle' | translate }}"
+          >
+            <mat-icon (click)="onShowImage()">image</mat-icon>
+          </div>
+          <button mat-icon-button (click)="changeLanguage('de')">
+            <mat-icon [svgIcon]="currentFlag"></mat-icon>
+          </button>
+        </div>
+      </mat-card-header>
+
+      <form [formGroup]="form">
+        <div fxLayout="column" fxLayoutAlign="start center">
+          <mat-form-field class="inputStyle" fxFlex="100%">
+            <mat-label>{{ "AddProduct.Name" | translate }}</mat-label>
+            <input required formControlName="name" matInput />
+            <mat-error *ngIf="form.get('name')?.hasError('required')">{{
+              "translation.InputReq" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputStyle" fxFlex="100%">
+            <mat-label>{{ "AddProduct.Description" | translate }}</mat-label>
+            <textarea
+              [rows]="3"
+              matInput
+              required
+              formControlName="description"
+            >
+            </textarea>
+            <mat-error *ngIf="form.get('description')?.hasError('required')">{{
+              "translation.InputReq" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputStyle" fxFlex="100%">
+            <mat-label>{{ "AddProduct.Tags" | translate }}</mat-label>
+            <mat-select formControlName="tags" multiple>
+              <mat-option *ngFor="let tag of tagsList" [value]="tag"
+                >{{ tag }}
+              </mat-option>
+            </mat-select>
+
+            <mat-error *ngIf="form.get('tags')?.hasError('required')">{{
+              "translation.InputReq" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputStyle" fxFlex="100%">
+            <mat-label>{{ "AddProduct.Producer" | translate }}</mat-label>
+            <input required formControlName="producer" matInput />
+            <mat-error *ngIf="form.get('producer')?.hasError('required')">{{
+              "translation.InputReq" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="input-style" *ngIf="!product">
+            <mat-label>{{ "ADD_PRODUCT.IMAGE" | translate }}</mat-label>
+            <input formControlName="img" matInput readonly />
+            <mat-icon matSuffix class="mr-2" (click)="file.click()"
+              >cloud_upload</mat-icon
+            >
+            <input
+              type="file"
+              hidden="true"
+              #file
+              (change)="processFile($event)"
+              accept=".jpg,.png"
+              readonly
+            />
+            <mat-error *ngIf="form.get('img')?.hasError('required')">{{
+              "COMMON.REQUIRED_FIELD" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="inputStyle" fxFlex="100%">
+            <mat-label>{{ "AddProduct.Price" | translate }}</mat-label>
+            <input
+              type="number"
+              step=".01"
+              required
+              formControlName="price"
+              matInput
+            />
+            <mat-error *ngIf="form.get('price')?.hasError('required')">{{
+              "translation.InputReq" | translate
+            }}</mat-error>
+          </mat-form-field>
+
+          <button
+            mat-button
+            (click)="addProduct()"
+            mat-raised-button
+            type="submit"
+            color="primary"
+            class=""
+          >
+            {{ "AddProduct.Add" | translate }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
