@@ -50,7 +50,6 @@
                 >{{ tag }}
               </mat-option>
             </mat-select>
-
             <mat-error *ngIf="form.get('tags')?.hasError('required')">{{
               "translation.InputReq" | translate
             }}</mat-error>
