@@ -5,6 +5,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Open and use server from https://github.com/dzik1331/super-szop-server
+To use it you need to change version of nvm to 8.10.0 and use command node dist/app.js
 
 ## Code scaffolding
 
